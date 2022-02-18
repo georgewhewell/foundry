@@ -9,10 +9,16 @@ edition = "2021"
 [dependencies]
 foundry-utils = { path = "./../utils" }
 
-sputnik = { package = "evm", git = "https://github.com/rust-blockchain/evm",  optional = true, features = ["tracing"] }
+sputnik = { package = "evm", git = "https://github.com/rust-blockchain/evm", rev = "52d5fe5", optional = true, features = ["tracing"] }
 
-ethers = { git = "https://github.com/gakonst/ethers-rs", default-features = false, features = ["solc-full"] }
-ethers-core = { git = "https://github.com/gakonst/ethers-rs", default-features = false }
+ethers = { path = "../../ethers-rs" }
+ethers-core = { path = "../../ethers-rs/ethers-core" }
+ethers-contract = { path = "../../ethers-rs/ethers-contract" }
+ethers-providers = { path = "../../ethers-rs/ethers-providers" }
+ethers-signers = { path = "../../ethers-rs/ethers-signers" }
+ethers-etherscan = { path = "../../ethers-rs/ethers-etherscan" }
+ethers-solc = { path = "../../ethers-rs/ethers-solc" }
+ethers-addressbook = { path = "../../ethers-rs/ethers-addressbook" }
 eyre = "0.6.5"
 once_cell = "1.9.0"
 tracing = "0.1.28"
@@ -30,7 +36,8 @@ ansi_term = "0.12.1"
 comfy-table = "5.0.0"
 
 [dev-dependencies]
-ethers = { git = "https://github.com/gakonst/ethers-rs", default-features = false, features = ["solc-full", "solc-tests"] }
+ethers = { path = "../../ethers-rs", default-features = false, features = ["solc-full", "solc-tests"] }
+foundry-utils = { path = "./../utils", features = ["test"] }
 
 [features]
 sputnik-helpers = ["sputnik"]
